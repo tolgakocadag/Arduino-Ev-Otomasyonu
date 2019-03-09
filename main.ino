@@ -17,21 +17,21 @@ int poz=180; //Garaj kapısı için servomotorun pozisyonu için değişken tan�
 int mesafe;//HC-SR04 Ultrasonik sensör için mesafeyi atmak için değişken tanımladım.
 #include <OLED_I2C.h> //OLED Ekranın kütüphanesini dahil ettim.
 OLED  myOLED(SDA, SCL, 8); //OLED ekran OLED_I2C Modülüyle geldiği için bunu tanıttım.
-extern uint8_t SmallFont[];
-extern uint8_t MediumNumbers[];
-extern uint8_t BigNumbers[];
+extern uint8_t SmallFont[]; // oled ekran yazı tipini tanımladık
+extern uint8_t MediumNumbers[]; //oled ekran yazı tipi tanımladık
+extern uint8_t BigNumbers[]; // oled ekran yazı tipi tanımladık
 void setup() {
-  servomotorum.attach(6);
+  servomotorum.attach(6); //servo digital pin
   pinMode(servo,OUTPUT);
-  digitalWrite(servo,LOW);
+  digitalWrite(servo,LOW); //servo motora 5V verdim.
 
-  servomotorum.write(poz);
-  delay(1000);
-  digitalWrite(servo,HIGH);
-  pinMode(klima, OUTPUT);
-  myOLED.begin();
-  myOLED.setFont(SmallFont);
-  pinMode(oturmaled,OUTPUT);
+  servomotorum.write(poz); //servo motorun pozisyonunu 180dereceye çektim.
+  delay(1000); //1 saniye 1 projenin kendine gelmesi için beklettim.
+  digitalWrite(servo,HIGH); //servo motorun 5V unu kestim.
+  pinMode(klima, OUTPUT); //
+  myOLED.begin(); //oled ekranı başlattık.
+  myOLED.setFont(SmallFont); //yazı tipini belirledim.
+  pinMode(oturmaled,OUTPUT); //oturma odasının ledini tanıttım.
   pinMode(mutfakled,OUTPUT);
   pinMode(TV,OUTPUT);
   pinMode(LED,OUTPUT);
